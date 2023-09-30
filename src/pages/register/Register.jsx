@@ -36,7 +36,7 @@ const Login = () => {
                     console.log(error.message);
                 });
 
-                
+
             })
             .catch(error => {
                 console.log(error.message);
@@ -49,8 +49,9 @@ const Login = () => {
                     <h1 className="text-5xl font-bold my-10">Register now!</h1>
                 </div>
                 <div className="card flex-shrink-0 w-full max-w-lg shadow-2xl bg-base-100">
-                    <form onSubmit={handleRegister}>
-                        <div className="card-body">
+
+                    <div className="card-body">
+                        <form onSubmit={handleRegister}>
                             <div className="form-control">
                                 <label className="label">
                                     <span className="label-text">Name</span>
@@ -78,8 +79,8 @@ const Login = () => {
                             <div>
                                 <Link to={`/login`}><p>Already has an account? Please Login</p></Link>
                             </div>
-                        </div>
-                    </form>
+                        </form>
+                    </div>  
                 </div>
             </div>
         </div>
