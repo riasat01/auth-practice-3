@@ -21,6 +21,7 @@ const Navbar = () => {
                 <NavLink to={`/`} className={({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active' : ''}><button className="tab tab-lifted hover:tab-active">Home</button></NavLink>
                 <NavLink to={`/login`} className={({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active' : ''}><button className="tab tab-lifted hover:tab-active">Login</button></NavLink>
                 <NavLink to={`/register`} className={({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active' : ''}><button className="tab tab-lifted hover:tab-active">Register</button></NavLink>
+                <NavLink to={`/orders`} className={({ isActive, isPending }) => isPending ? 'pending' : isActive ? 'active' : ''}><button className="tab tab-lifted hover:tab-active">Orders</button></NavLink>
             </nav>
             <div>
                 {
