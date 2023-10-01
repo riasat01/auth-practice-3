@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { UserInfo } from "../../components/auth-provider/AuthProvider";
 
@@ -15,25 +15,27 @@ const Login = () => {
         console.log(email);
         setPassword(e.target.password.value);
         console.log(password);
+    }
 
-        // signin user
-
-        signInUser(email, password)
+    // signin user
+    useEffect(() => {
+        (email && password) && signInUser(email, password)
             .then(userCredintial => {
                 console.log(userCredintial.user);
 
                 // resetting form
-                e.target.reset();
+                // e.target.reset();
                 navigate(`/`)
             }).catch(error => {
                 console.log(error.message);
             })
-    }
+    }, [email, password])
+
 
     const handleGoogleSignIn = () => {
         signinWithGoogle()
-        .then(result => console.log(result))
-        .catch(error => console.log(error.message));
+            .then(result => console.log(result))
+            .catch(error => console.log(error.message));
     }
     return (
         <div className="hero max-w-screen-2xl max-h-screen bg-base-200 m-auto">

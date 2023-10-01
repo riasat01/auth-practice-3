@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserInfo } from "../../components/auth-provider/AuthProvider";
 import { updateProfile } from "firebase/auth";
@@ -19,17 +19,17 @@ const Login = () => {
         console.log(email);
         setPassword(e.target.password.value);
         console.log(password);
-
-        // creating user l
-
-        createUser(email, password)
+    }
+    // creating user l
+    useEffect(() => {
+        (name && email && password) && createUser(email, password)
             .then(result => {
                 console.log(result.user);
 
                 // set name of user
 
                 updateProfile(auth.currentUser, {
-                    displayName: e.target.name.value
+                    displayName: name
                 }).then(() => {
                     console.log(`display name updated`)
                 }).catch((error) => {
@@ -41,7 +41,8 @@ const Login = () => {
             .catch(error => {
                 console.log(error.message);
             })
-    }
+    }, [name, email, password])
+
     return (
         <div className="hero max-w-screen-2xl max-h-screen bg-base-200 m-auto">
             <div className="hero-content flex-col w-1/2">
@@ -80,7 +81,7 @@ const Login = () => {
                                 <Link to={`/login`}><p>Already has an account? Please Login</p></Link>
                             </div>
                         </form>
-                    </div>  
+                    </div>
                 </div>
             </div>
         </div>
